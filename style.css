@@ -4,18 +4,32 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     min-height: 100vh;
 
     background:
         radial-gradient(
-            circle at 50% 20%,
-            #1b2021 0%,
-            #0d1011 45%,
-            #080909 100%
+            circle at 50% 15%,
+            rgba(180, 40, 45, 0.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(35, 90, 65, 0.15),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #101918,
+            #16201e 45%,
+            #0c1110
         );
 
-    color: #deded8;
+    color: #eee9dc;
 
     font-family:
         Arial,
@@ -25,9 +39,10 @@ body {
     overflow-x: hidden;
 }
 
-/* -----------------------------
+
+/* ============================
    SNÖ
------------------------------ */
+============================ */
 
 .snow {
     position: fixed;
@@ -35,89 +50,153 @@ body {
 
     pointer-events: none;
 
-    opacity: 0.25;
+    z-index: 10;
+
+    opacity: 0.5;
 
     background-image:
-        radial-gradient(circle, white 1px, transparent 1px),
-        radial-gradient(circle, white 1px, transparent 1px);
+        radial-gradient(circle, #fff 1px, transparent 2px),
+        radial-gradient(circle, #fff 1.5px, transparent 2px),
+        radial-gradient(circle, #fff 1px, transparent 2px);
 
     background-size:
-        140px 140px,
-        220px 220px;
+        120px 120px,
+        190px 190px,
+        270px 270px;
 
     background-position:
-        20px 30px,
-        100px 120px;
+        10px 20px,
+        70px 90px,
+        130px 30px;
 
-    animation: snow 20s linear infinite;
+    animation: snow 18s linear infinite;
 }
 
 @keyframes snow {
 
-    from {
-        transform: translateY(-100px);
+    0% {
+        transform: translateY(-120px);
     }
 
-    to {
-        transform: translateY(100px);
+    100% {
+        transform: translateY(120px);
     }
 
 }
 
-/* -----------------------------
-   SIDA
------------------------------ */
+
+/* ============================
+   HUVUDSIDA
+============================ */
 
 .page {
+
     position: relative;
 
     min-height: 100vh;
 
-    padding: 30px 45px;
+    padding: 25px 40px 20px;
 
-    z-index: 1;
+    z-index: 2;
+
 }
 
-/* -----------------------------
-   TOPBAR
------------------------------ */
+
+/* ============================
+   ÖVRE RAD
+============================ */
 
 .topbar {
+
     display: flex;
 
     justify-content: space-between;
 
-    padding-bottom: 18px;
+    align-items: center;
+
+    padding-bottom: 15px;
 
     border-bottom:
-        1px solid rgba(255,255,255,0.12);
+        1px solid rgba(236, 226, 200, 0.18);
 
-    color: #777d7a;
+    color: #b6b6aa;
 
     font-size: 10px;
 
-    letter-spacing: 3px;
+    letter-spacing: 2.5px;
+
 }
 
-/* -----------------------------
-   HERO
------------------------------ */
+.topbar div:first-child {
+
+    color: #d8d0bb;
+
+}
+
+
+/* ============================
+   HUVUDINNEHÅLL
+============================ */
 
 .hero {
 
-    max-width: 850px;
+    position: relative;
+
+    max-width: 900px;
 
     margin: auto;
 
-    padding:
-        100px 0
-        80px;
+    padding: 85px 0 70px;
 
 }
 
+
+/* små dekorativa stjärnor */
+
+.hero::before {
+
+    content: "✦";
+
+    position: absolute;
+
+    top: 55px;
+    left: -45px;
+
+    color: #d8bd72;
+
+    font-size: 22px;
+
+    opacity: 0.7;
+
+}
+
+.hero::after {
+
+    content: "✦";
+
+    position: absolute;
+
+    right: 30px;
+    bottom: 40px;
+
+    color: #b84a4f;
+
+    font-size: 16px;
+
+    opacity: 0.7;
+
+}
+
+
+/* ============================
+   ETIKETT
+============================ */
+
 .label {
 
-    color: #858b88;
+    display: inline-block;
+
+    color: #d4bd7d;
 
     font-size: 10px;
 
@@ -127,6 +206,11 @@ body {
 
 }
 
+
+/* ============================
+   RUBRIK
+============================ */
+
 h1 {
 
     font-family:
@@ -134,52 +218,104 @@ h1 {
         "Times New Roman",
         serif;
 
-    font-size:
-        clamp(55px, 8vw, 105px);
-
     font-weight: 400;
+
+    font-size:
+        clamp(58px, 8vw, 105px);
 
     line-height: 0.9;
 
     letter-spacing: -4px;
 
-    color: #eeeeea;
+    color: #f3eee1;
+
+    text-shadow:
+        0 3px 20px rgba(0,0,0,0.3);
 
 }
+
+
+/* ============================
+   LINJE
+============================ */
 
 .divider {
 
-    width: 80px;
+    position: relative;
+
+    width: 120px;
 
     height: 1px;
 
-    background: #888e8a;
+    margin: 38px 0 25px;
 
-    margin: 40px 0 25px;
+    background:
+        linear-gradient(
+            90deg,
+            #c5a75d,
+            transparent
+        );
 
 }
 
-.location {
+.divider::after {
 
-    color: #818783;
+    content: "✦";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: -8px;
+
+    transform: translateX(-50%);
+
+    color: #c9ae68;
+
+    background: #121b19;
+
+    padding: 0 8px;
 
     font-size: 10px;
 
-    letter-spacing: 3px;
+}
 
-    line-height: 1.8;
+
+/* ============================
+   PLATS / DATUM
+============================ */
+
+.location {
+
+    color: #b4b5aa;
+
+    font-size: 10px;
+
+    line-height: 1.9;
+
+    letter-spacing: 3px;
 
 }
 
+
+/* ============================
+   TEXT
+============================ */
+
 .description {
 
-    max-width: 590px;
+    max-width: 600px;
 
-    margin-top: 55px;
+    margin-top: 50px;
 
-    color: #a8adab;
+    color: #c0c1b9;
 
-    font-size: 15px;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 16px;
 
     line-height: 1.8;
 
@@ -187,35 +323,96 @@ h1 {
 
 .description p {
 
-    margin-bottom: 18px;
+    margin-bottom: 17px;
 
 }
 
-/* -----------------------------
+
+/* ============================
    ACCESS BOX
------------------------------ */
+============================ */
 
 .access {
 
-    max-width: 590px;
+    position: relative;
 
-    margin-top: 50px;
+    max-width: 600px;
 
-    padding: 30px;
+    margin-top: 45px;
 
-    background: rgba(255,255,255,0.025);
+    padding: 32px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.045),
+            rgba(255,255,255,0.015)
+        );
 
     border:
-        1px solid rgba(255,255,255,0.14);
+
+        1px solid
+        rgba(224, 207, 160, 0.25);
+
+    border-radius: 3px;
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,0.3);
+
+        0 20px 60px
+        rgba(0,0,0,0.25);
 
 }
 
+
+/* liten röd julaccent */
+
+.access::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 25px;
+    right: 25px;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #9e3d42,
+            transparent
+        );
+
+}
+
+
+/* små hörndetaljer */
+
+.access::after {
+
+    content: "❄";
+
+    position: absolute;
+
+    right: 20px;
+    top: 18px;
+
+    color: #d3c6a5;
+
+    font-size: 17px;
+
+    opacity: 0.4;
+
+}
+
+
 .access-title {
 
-    color: #c7cbc7;
+    color: #d8bd72;
 
     font-size: 10px;
 
@@ -225,9 +422,10 @@ h1 {
 
 }
 
+
 .access p {
 
-    color: #858a87;
+    color: #aaaDA6;
 
     font-size: 13px;
 
@@ -235,50 +433,88 @@ h1 {
 
 }
 
+
+/* ============================
+   KNAPP
+============================ */
+
 button {
 
-    margin-top: 22px;
+    position: relative;
 
-    padding: 15px 22px;
+    margin-top: 25px;
 
-    background: transparent;
+    padding: 16px 27px;
 
-    border:
-        1px solid rgba(255,255,255,0.35);
+    border: none;
 
-    color: #dedfd9;
+    border-radius: 30px;
 
-    font-size: 10px;
+    background:
 
-    letter-spacing: 2px;
+        linear-gradient(
+            135deg,
+            #a94147,
+            #7f3037
+        );
+
+    color: #fff5e8;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 13px;
+
+    letter-spacing: 1.5px;
 
     cursor: pointer;
 
-    transition: 0.25s;
+    box-shadow:
+
+        0 8px 25px
+        rgba(0,0,0,0.3),
+
+        inset 0 1px 0
+        rgba(255,255,255,0.15);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
 
 }
+
 
 button span {
 
-    margin-left: 20px;
+    margin-left: 14px;
 
-    color: #999f9c;
+    font-size: 16px;
 
 }
+
 
 button:hover {
 
-    background: #e2e3dd;
+    transform:
+        translateY(-3px)
+        scale(1.02);
 
-    color: #101212;
+    filter: brightness(1.1);
 
-    transform: translateY(-2px);
+    box-shadow:
+
+        0 12px 30px
+        rgba(0,0,0,0.4);
 
 }
 
-/* -----------------------------
+
+/* ============================
    FOOTER
------------------------------ */
+============================ */
 
 footer {
 
@@ -289,9 +525,10 @@ footer {
     padding-top: 15px;
 
     border-top:
-        1px solid rgba(255,255,255,0.1);
+        1px solid
+        rgba(236, 226, 200, 0.12);
 
-    color: #505553;
+    color: #666b65;
 
     font-size: 8px;
 
@@ -299,9 +536,10 @@ footer {
 
 }
 
-/* -----------------------------
+
+/* ============================
    MOBIL
------------------------------ */
+============================ */
 
 @media (max-width: 700px) {
 
@@ -319,13 +557,21 @@ footer {
 
     .hero {
 
-        padding: 70px 0;
+        padding:
+            65px 0
+            55px;
+
+    }
+
+    .hero::before {
+
+        left: 0;
 
     }
 
     h1 {
 
-        font-size: 58px;
+        font-size: 60px;
 
         letter-spacing: -2px;
 
@@ -333,13 +579,13 @@ footer {
 
     .description {
 
-        font-size: 14px;
+        font-size: 15px;
 
     }
 
     .access {
 
-        padding: 24px;
+        padding: 25px;
 
     }
 
